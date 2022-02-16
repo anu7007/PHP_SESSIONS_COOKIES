@@ -43,9 +43,7 @@ session_start();
   for($i=0;$i<$len;$i++)
   {?>
     <img src="<?php echo $_SESSION['pics'][$i]; ?>" alt="picture" width="200px" height="150px" class="pic"/><?php
-  }?>
-  
-  
+  }?> 
 </div>
 
 </body>
