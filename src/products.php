@@ -1,5 +1,7 @@
 <?php
-include('header.php');
+session_start();
+include_once('header.php');
+// include('cart.php');
 // include('images/');
 $products = array(
 	array("id"=>101,"name"=>"Basket Ball","image"=>"images/basketball.png","price"=>150),
@@ -13,18 +15,6 @@ $products = array(
 <?php include('style.css');?>
 </style>
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-<?php include('style.css');?>
-</style>
-
-<style>
-<?php include('style.css');?>
-</style>
-
-<!DOCTYPE html>
 <html>
 <head>
 	<title>
@@ -43,7 +33,8 @@ $products = array(
 </head>
 <?php
 function displayProducts($products){?>
-		 <div id="main">
+          <form action="cart.php" method="POST">
+		    <div id="main">
 			 
 			 <div id="products">
 				<?php 
@@ -53,7 +44,7 @@ function displayProducts($products){?>
 					echo "<img src=".$product['image'].">";
 					echo '<h3 class="title"><a href="#">Product '.$product['id'].'</a></h3>';
 					echo '<span>Price: $'. $product['price'].'</span>';
-					echo '<a class="add-to-cart" href="cart.php">Add To Cart</a>';
+					echo '<a class="add-to-cart" name="addtocart">Add To Cart</a>';
 				}
 				?>
 		 </div>
@@ -61,9 +52,14 @@ function displayProducts($products){?>
 		<div>
 		<?php		
 }
+// header('location:products.php');
 	   displayProducts($products);
 				
-
+	//    function addToCart(){
+	// 	echo "add to cart";
+	
+	
+	// }
 
 	 
 include('footer.php');
