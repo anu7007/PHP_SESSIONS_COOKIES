@@ -29,11 +29,13 @@
         //Traversing each Object in the Session array to match the Product ID
         foreach($_SESSION['cart'] as $key => $product)
         {
-            echo ($_SESSION['cart'][$key]);
-            if ($_SESSION['cart'][$key])
+            print_r ($_SESSION['cart'][$key]);
+            echo $key;
+            if ($product['product'] == $id)
             {
+                echo "36";
                 //Deleting the Product from the Cart Array
-                unset($_SESSION['cart'][$key]);
+                 unset($_SESSION['cart'][$key]);
             }
         }
     }
