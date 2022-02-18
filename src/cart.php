@@ -1,155 +1,96 @@
 <?php
-session_start();
-include_once('header.php');
-include_once('config.php');
-?>
-<style>
-<?php include('style.css');?>
-</style>
-<?php
-$myData=$data;
-function addCart($data){
-    if(!isset($_SESSION['cart']))
+    session_start();
+    include_once ("config.php");
+    header("location: products.php");
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+
+    //Getting Product
+    foreach ($_POST as $k => $p)
     {
-        $_SESSION['cart']=array();
+        break;
     }
-    foreach($data as $value)
+
+    switch ($p)
+    {            
+        case "Add To Cart":
+            addToCart();
+            break;
+        
+        case "editCart":
+            edit();
+            break;
+    }
+
+    function addToCart()
     {
-        if($value['id'] == $_GET['id'])
+        global $k, $p;
+        if ( (isset($_SESSION['cart'])) && $p=='Add To Cart') 
         {
-            $exist=checkExistence($value['id']);
-            if($exist!=true)
+            $ifExists=0;
+            foreach($_SESSION['cart'] as $key => $product)
             {
-                $cartdata=array(
-                'id'=>$value['id'],
-                'img'=>$value['img'],
-                'price'=>$value['Price'],
-                'quantity'=>1,
-                'total'=>0
-                );
+                if ($product['product'] == $k)
+                {
+                    $ifExists = 1;
+                    $_SESSION['cart'][$key]['Quantity'] += 1;
+                    break;
+                }
             }
-            $cartdata['total'] = $cartdata['quantity'] * $cartdata['Price'] ;
-            array_push($_SESSION['cart'], $cartdata);
+            if ($ifExists == 0)
+            {
+                $_SESSION['cart'][] = array("product" => $k, "Quantity" => 1);
+            }
         }
-    }
-}
-// header('Location:products.php');
-function checkExistence($id){
-    foreach($_SESSION['cart'] as $key=>$cData)
-    {
-        if($cData['id']==$id)
+        else
         {
-            $_SESSION['cart'][$key]['quantity']++;
-            $_SESSION['cart'][$key]['total']=$_SESSION['cart'][$key]['quantity'] * $_SESSION['cart'][$key]['price'];
+            $_SESSION['cart'][] = array("product" => $k, "Quantity" => 1);
+        }
+
+        valueCheck();
+    }
+
+    function edit()
+    {
+        $cnt=0;
+        foreach ($_POST as $k => $p)
+        {
+            if ($cnt==0)
+                $id=$k;
+            if ($cnt == 1)
+                break;
+            $cnt++;
+        }
+
+      
+        foreach($_SESSION['cart'] as $key => $product)
+        {
+            if ($product['product'] == $id)
+            {
+                $_SESSION['cart'][$key]['Quantity'] = $p;
+            }
+        }
+
+        valueCheck();
+    }
+
+    function valueCheck()
+    { 
+       foreach ($_POST as $k => $p)
+        {
+            break;
+        }
+        foreach($_SESSION['cart'] as $key => $product)
+        {
+            if ($_SESSION['cart'][$key]['Quantity'] == 0)
+            {
+                //Deleting the Product from the Cart Array
+                unset($_SESSION['cart'][$key]);
+            }
         }
     }
-}
-addCart($myData);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if(isset($_POST['addtocart']))
-//     $_SESSION['cart'] = array();
-//     $_SESSION['count']=count($_SESSION['cart']);
-//     if($SESSION['count']==0){
-//         echo $SESSION['count'];
-//         $errormsg="<h3>Uhhooo!!! Your Cart is Empty</h3>";
-//         echo $errormsg;
-//     }
-//     else{
-
-//         echo $SESSION['cart'];
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-</head>
-<body>
-   
-</body>
-</html>

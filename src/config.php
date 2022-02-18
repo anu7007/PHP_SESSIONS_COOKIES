@@ -1,20 +1,22 @@
 <?php
-    $data=array(
-        array('id'=>101,
-        'img'=>'<img src="images/football.png">',
-        'Price'=>150.00 ),
-        array('id'=>102,
-        'img'=>'<img src="images/tennis.png">',
-        'Price'=>120.00 ),
-        array('id'=>103,
-        'img'=>'<img src="images/basketball.png">',
-        'Price'=>90.00 ),
-        array('id'=>104,
-        'img'=>'<img src="images/table-tennis.png">',
-        'Price'=>110.00 ),
-        array('id'=>105,
-        'img'=>'<img src="images/soccer.png">',
-        'Price'=>80.00 ),
+    $products = array
+    (
+        array("id" => 101, "name" => "Basket Ball", "image" => "basketball.png", "price" => 150),
+        array("id" => 102, "name" => "Football", "image" => "football.png", "price" => 120),
+        array("id" => 103, "name" => "Soccer", "image" => "soccer.png", "price" => 110),
+        array("id" => 104, "name" => "Table Tennis", "image" => "table-tennis.png", "price" => 130),
+        array("id" => 105, "name" => "Tennis", "image" => "tennis.png", "price" => 100)
     );
-    
+
+    function searchID($id, $products)
+	{
+		foreach($products as $key => $val)
+		{
+			if($val['id'] == $id)
+			{
+				return $key;
+			}
+		}
+		return null;
+	}
 ?>

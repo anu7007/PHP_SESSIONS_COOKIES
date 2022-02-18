@@ -19,6 +19,7 @@ body{
 #main{
 	padding-top: 0px;
 	padding-bottom: 0px;
+	overflow: hidden;
 }
 
 #logo{
@@ -144,69 +145,87 @@ body{
 	border: 1px solid #cccccc; 
 }
 
+#cart
+{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+#cart h2
+{
+	text-align: center;
+	font-size: 30px;
+	padding: 20px;
+	padding-bottom: 0px;
+}
+
+#cart h3
+{
+	text-align: right;
+	font-size: 24px;
+	padding: 20px;
+	padding-top: 0px;
+	color: rgb(243, 69, 69);
+}
+
 #cart table
 {
-	width:100%;
-	border:2px solid #fff;
-	border-collapse:collapse;
-}
-
-#cart td,#cart th
-{
-	color:#fff;
-	padding:5px 10px;
-	font-size:18px;
+	width: 90%;
 	text-align: center;
+	margin: auto;
 }
 
-#cart td
+#cart table th
 {
-	color:black;
+	font-size: 24px;
 }
 
-#cart th
+#cart table td
 {
-	background-color:#3E9CBF;
+	padding: 10px;
+	font-size: 20px;
 }
 
-input
+#cart table tr
 {
-	font-size:18px;
-	border:none;
-	text-align:center;
+	border: solid 1px  black;
 }
 
-input[type="submit"]
+#footer
 {
-	border-radius:5px;
-	border:2px solid black;
-	background-color:#3E9CBF;
-	padding:8px;
-	cursor:pointer;
-	color:#fff;
-}
-#hide
-{
-	display:none;
-}
-
-h3 
-{
-	font-size:30px;
-	font-weight:bold;
-}
-
-#empty
-{
+	margin: 0;
+	padding: 0;
 	text-align: center;
-	color:#fff;
-	border-radius:5px;
-	display:block;
-	width:100px;
-	margin:10px 0px;
-	padding:5px;
+	margin-top: 2%;
+}
+
+a
+{
+	text-decoration: none;
+	color: black;
+}
+
+.inp
+{
+	padding: 6px 10px;
+	text-align: center;
 	font-size: 18px;
-	text-decoration:none;
-	background-color:grey;
+	/* width: 20%; */
+	border: none;
+	outline: none;
+}
 
+inp:focus
+{
+	border: none;
+}
+
+inp:hover
+{
+	border: none;
+}
+.emptyCart{
+	text-decoration: none;
+	color: red;
 }

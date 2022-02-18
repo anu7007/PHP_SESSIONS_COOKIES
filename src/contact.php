@@ -1,9 +1,6 @@
 <?php
-include('header.php');
+	session_start();
 ?>
-<style>
-<?php include('style.css');?>
-</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +10,16 @@ include('header.php');
 	<link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	
+	<div id="header">
+		<h1 id="logo">Logo</h1>
+		<nav>
+			<ul id="menu">
+				<li><a href="index.php">Home</a></li>
+				<li><a href="products.php">Products</a></li>
+				<li><a href="contact.php">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
 	<div id="main">
 		<div id="contact-form">
 			<form action="" method="">
@@ -30,8 +36,13 @@ include('header.php');
 		</div>
 		
 	</div>
-	<?php
-include('footer.php');
-?>
+	<div id="footer">
+		<nav>
+			<ul id="footer-links">
+				<li><a href="#">Privacy</a></li>
+				<li><a href="#">Declaimers</a></li>
+			</ul>
+		</nav>
+	</div>
 </body>
 </html>
